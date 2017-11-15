@@ -12,7 +12,6 @@ let Hapi = require('hapi'),
 
 let serverConfig = { };
 let server = new Hapi.Server(serverConfig);
-
 server.app.name = config.app.name;
 server.app.serect = config.environment.secretKey;
 
@@ -42,9 +41,36 @@ fs.readdirSync('./routes').forEach(function(curFile) {
   }
 });
 
-server.start(function () {
-  let dashChars = '+' + new Array(32 + server.info.uri.length + server.app.name.length).join('-') + '+';
-  console.log(dashChars);
-  console.log('| Application `%s` is running at %s |', server.app.name, server.info.uri);
-  console.log(dashChars);
+server.route({
+  method: 'GET',
+  path: '/',
+  handler: function (request, reply) {
+      reply('Hello, world!');
+  }
 });
+
+server.route({
+  method: 'GET',
+  path: '/{name}',
+  handler: function (request, reply) {
+      reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
+  }
+});
+
+server.start(function () {
+        console.log("hello ");
+        console.log('server running at:${server.info.uri}');
+    
+});
+const JsSIP = require('jssip');
+const NodeWebSocket = require('jssip-node-websocket');
+
+let socket = new NodeWebSocket('wss://foo.example.com');
+
+let ua = new JsSIP.UA(
+  {
+    uri          : 'sip:alice@example.com',
+    password     : 'xxxxxxxx',
+    display_name : 'Alice',
+    sockets      : [ socket ]
+  });

@@ -12,19 +12,21 @@
   ],
   "devDependencies": {
     "gulp": "^3.9.0",
-    "pm2": "^0.14.7"
+    "pm2": "^0.14.7",
+    "jssip-node-websocket": ""
   },
   "dependencies": {
-    "boom": "^2.8.0",
     "bluebird": "^2.9.34",
+    "boom": "^2.8.0",
     "hapi": "^13.1.0",
     "hapi-swagger": "^4.2.1",
+    "inert": "^3.2.0",
     "joi": "^6.6.1",
     "jsonwebtoken": "^5.0.5",
+    "jssip": "^3.1.0",
     "lodash": "^3.10.1",
     "mongoose": "^4.1.1",
     "request": "^2.60.0",
-    "inert": "^3.2.0",
     "vision": "^4.0.1"
   }
 }
